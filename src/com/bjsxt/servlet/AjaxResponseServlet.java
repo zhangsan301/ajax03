@@ -28,7 +28,7 @@ public class AjaxResponseServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html;charset=utf-8");
+        resp.setContentType("text/xml;charset=utf-8");
 
          /******【A】普通文本格式******/
          //resp.getWriter().println("ajax响应成功");
@@ -41,6 +41,20 @@ public class AjaxResponseServlet extends HttpServlet {
         Gson gson = new Gson();
         String json = gson.toJson(user);
 
-        resp.getWriter().println(json);
+        /************【C】响应XML格式***************/
+
+        resp.getWriter().println("<users>" +
+                                        "<user>" +
+                                            "<id>1</id>" +
+                                            "<uname>zs</uname>" +
+                                            "<sex>男</sex>" +
+                                        "</user>" +
+                                        "<user>" +
+                                             "<id>2</id>" +
+                                             "<uname>lisi</uname>" +
+                                             "<sex>男</sex>" +
+                                        "</user>" +
+                                  "</users>");
+
     }
 }

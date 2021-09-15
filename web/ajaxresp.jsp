@@ -32,16 +32,22 @@
 
                //{uid:1, uname:'张三', pwd:'123'}
                //"{uid:1, uname:'张三', pwd:'123'}"
-               var text = xhr.responseText;
+               // var text = xhr.responseText;
+
                //使用eval方法就可以把json字符串转成json对象
                //eval("var json ="+text);
-               console.log(text);
-               var json = JSON.parse(text);
+               // var json = JSON.parse(text);
 
                //把JSON对象转换成JSON字符串
                //JSON.stringify(json);
                //这种方式在进行json转换的时候, key必须使用""引出来
-               console.log(json.uname);
+               // console.log(json.uname);
+
+               var doc = xhr.responseXML;
+
+               var h = doc.getElementsByTagName("uname")[0].innerHTML;
+               console.log(h);
+
            }
          }
 
